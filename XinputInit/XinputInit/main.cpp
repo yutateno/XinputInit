@@ -1,21 +1,26 @@
-#include <stdio.h>
-#include "Input.h"
+#include <iostream>
+#include "Input.hpp"
 
 int main()
 {
 	Input::Input();
+	Input::Update();
+
+	std::cout << "接続されているパッドの個数は" << Input::GetPadNum() << std::endl;
 
 	while (true)
 	{
 		Input::Update();
+		std::cout << "右スティックの左右" << Input::GetPadThumbData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::STICK_RIGHT_AXIS_X) << std::endl;
+		
+		if (Input::GetPadButtonData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::BUTTON_B) == 1)
+		{
+			Input::SetPadDeadZone(XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE
+				, 30000);
+		}
 
-		//printf("%d\n", Input::GetPadThumbData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::STICK_LEFT_AXIS_X));
-		//printf("%d\n\n", Input::GetPadThumbData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::STICK_LEFT_AXIS_Y));
-		//printf("%d\n", Input::GetPadThumbData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::STICK_RIGHT_AXIS_X));
-		//printf("%d\n\n", Input::GetPadThumbData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::STICK_RIGHT_AXIS_Y));
-		break;
+		if(Input::GetPadButtonData(XINPUT_PAD::PAD_NUM01,XINPUT_PAD::BUTTON_A) == 1)	break;
 	}
-	printf("%d\n", Input::GetPadNum());
 	
 	return 0;
 }

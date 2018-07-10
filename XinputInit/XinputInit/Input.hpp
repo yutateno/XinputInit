@@ -45,6 +45,25 @@ namespace XINPUT_PAD
 	const unsigned __int8 STICK_LEFT_AXIS_Y		 = 3;
 }
 
+struct XINPUT_STICK_MY_DEADZONE
+{
+	// 左スティックの左右
+	short LEFT_AXIS_X_RIGHT = XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE;
+	short LEFT_AXIS_X_LEFT = -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE;
+
+	// 左スティックの上下
+	short LEFT_AXIS_Y_UP = XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE;
+	short LEFT_AXIS_Y_DOWN = -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE;
+
+	// 右スティックの左右
+	short RIGHT_AXIS_X_RIGHT = XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE;
+	short RIGHT_AXIS_X_LEFT = -XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE;
+
+	// 右スティックの上下
+	short RIGHT_AXIS_Y_UP = XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE;
+	short RIGHT_AXIS_Y_DOWN = -XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE;
+};
+
 class Input
 {
 private:
@@ -55,14 +74,22 @@ private:
 
 	static XINPUT_STATE state[4];				// xinputの中身
 
+	static XINPUT_STICK_MY_DEADZONE stickDeadZone;			// スティックのデッドゾーン値
+	
 public:
 	Input();		// コンストラクタ
 	~Input();		// デストラクタ
 
 	static void Update();		// 操作更新
 
+	
+
 	static int GetPadNum();																// コントローラの数
-	static int GetPadButtonData(unsigned __int8 use_padnum, unsigned __int8 use_input);			// コントローラのボタン操作
+	static int GetPadButtonData(unsigned __int8 use_padnum, unsigned __int8 use_button);			// コントローラのボタン操作
 	static int GetPadTriggerData(unsigned __int8 use_padnum, bool use_Is_triggerLeft);				// コントローラのトリガー操作
 	static int GetPadThumbData(unsigned __int8 use_padnum, unsigned __int8 use_stick);			// コントローラのスティック操作
+	static void SetPadDeadZone(short leftPad_right = XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, short leftPad_left = -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE
+		, short leftPad_up = XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, short leftPad_down = -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE
+		, short rightPad_right = XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE, short rightPad_left = -XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE
+		, short rightPad_up = XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE, short rightPad_down = -XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE);		// デッドゾーンの設定値変更  // (ある程度楽したいので一応デフォルト引数乱用)
 };
