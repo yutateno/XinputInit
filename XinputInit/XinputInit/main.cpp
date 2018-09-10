@@ -3,23 +3,23 @@
 
 int main()
 {
-	Input::Input();
-	Input::Update();
+	InputPad::InputPad();
+	InputPad::FirstUpdate();
 
-	std::cout << "接続されているパッドの個数は" << Input::GetPadNum() << std::endl;
+	std::cout << "接続されているパッドの個数は" << InputPad::GetPadNum() << std::endl;
 
 	while (true)
 	{
-		Input::Update();
-		std::cout << "右スティックの左右" << Input::GetPadThumbData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::STICK_RIGHT_AXIS_X) << std::endl;
+		InputPad::EverUpdate();
+		std::cout << "右スティックの左右" << InputPad::GetPadThumbData(XINPUT_PAD::NUM01, XINPUT_PAD::STICK_RIGHT_X) << std::endl;
 		
-		if (Input::GetPadButtonData(XINPUT_PAD::PAD_NUM01, XINPUT_PAD::BUTTON_B) == 1)
+		if (InputPad::GetPadButtonData(XINPUT_PAD::NUM01, XINPUT_PAD::BUTTON_B) == 1)
 		{
-			Input::SetPadDeadZone(XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE
+			InputPad::SetPadDeadZone(XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE, -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE
 				, 30000);
 		}
 
-		if(Input::GetPadButtonData(XINPUT_PAD::PAD_NUM01,XINPUT_PAD::BUTTON_A) == 1)	break;
+		if(InputPad::GetPadButtonData(XINPUT_PAD::NUM01,XINPUT_PAD::BUTTON_A) == 1)	break;
 	}
 	
 	return 0;
