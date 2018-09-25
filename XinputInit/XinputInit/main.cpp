@@ -11,7 +11,7 @@ int main()
 	while (true)
 	{
 		InputPad::EverUpdate();
-		std::cout << "右スティックの左右" << InputPad::GetPadThumbData(XINPUT_PAD::NUM01, XINPUT_PAD::STICK_RIGHT_X) << std::endl;
+		std::cout << "左スティックの左右" << (InputPad::GetPadThumbData(XINPUT_PAD::NUM01, XINPUT_PAD::STICK_LEFT_X) - XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE) % 24918 << std::endl;
 		
 		if (InputPad::GetPadButtonData(XINPUT_PAD::NUM01, XINPUT_PAD::BUTTON_B) == 1)
 		{
