@@ -73,20 +73,8 @@ namespace DLLXinput
 		short RIGHT_DOWN = -8689;
 	};
 
-	class InputPad
-	{
-	private:
-		unsigned __int8 controllerNum;		// 接続している最大の個数
-		bool setControll[4];
-
-		int button[4][16];					// wButtonの対応
-		int stick[4][4];						// stickの対応(公式だとthumb)
-
-		STICK_DEADZONE stickDeadZone;		// スティックのデッドゾーン値
-
-	public:
-		DLLXINPUT_API InputPad();		// コンストラクタ
-		DLLXINPUT_API ~InputPad();		// デストラクタ
+		DLLXINPUT_API void Init();
+		DLLXINPUT_API void Clean();
 
 		DLLXINPUT_API void FirstUpdate();		// ゲーム開始前操作更新
 		DLLXINPUT_API void EverUpdate();			// ゲーム開始後操作更新
@@ -108,5 +96,4 @@ namespace DLLXinput
 		DLLXINPUT_API int GetPadButtonData(unsigned __int8 use_padnum, unsigned __int8 use_button);			// コントローラのボタン操作
 		DLLXINPUT_API int GetPadTriggerData(unsigned __int8 use_padnum, bool use_Is_triggerLeft);				// コントローラのトリガー操作
 		DLLXINPUT_API int GetPadThumbData(unsigned __int8 use_padnum, unsigned __int8 use_stick);			// コントローラのスティック操作
-	};
 }
