@@ -49,6 +49,9 @@ namespace DLLXinput
 		const unsigned __int8 STICK_LEFT_X = 2;
 		const unsigned __int8 STICK_LEFT_Y = 3;
 
+		const int MAX_STICK_PLUS = 32767;
+		const int MAX_STICK_MINUS = -32768;
+
 
 		// バイブレーション
 		const unsigned __int16 VIB_MAX = 65535;
@@ -82,6 +85,8 @@ namespace DLLXinput
 		DLLXINPUT_API void Vibration(unsigned __int8 use_padnum, int time = 0
 			, unsigned __int16 rightVib = XINPUT_PAD::VIB_MAX, unsigned __int16 leftVib = XINPUT_PAD::VIB_MAX);		// バイブレーションを行う
 
+		DLLXINPUT_API void VibrationSlowlyStop();
+
 		DLLXINPUT_API void VibrationStop(unsigned __int8 use_padnum);						// バーブレーションを止める
 
 		DLLXINPUT_API void SetPlayerPadNum(unsigned __int8 playerPadNum);					// プレイヤーの番号を設定
@@ -91,8 +96,10 @@ namespace DLLXinput
 			, short rightPad_right = 8689, short rightPad_left = -8689
 			, short rightPad_up = 8689, short rightPad_down = -8689);		// デッドゾーンの設定値変更  // (ある程度楽したいので一応デフォルト引数乱用)
 
+		DLLXINPUT_API const short GetPadThumbMax(const bool stickLightNow, const bool stickXAxisNow, const bool stickPlusNow);
+
 		DLLXINPUT_API int GetPadNum();																// コントローラの数
-		DLLXINPUT_API unsigned __int8 GetPlaerPadNumber();																// コントローラの数
+		DLLXINPUT_API unsigned __int8 GetPlayerPadNumber();																// コントローラの数
 		DLLXINPUT_API int GetPadButtonData(unsigned __int8 use_padnum, unsigned __int8 use_button);			// コントローラのボタン操作
 		DLLXINPUT_API int GetPadTriggerData(unsigned __int8 use_padnum, bool use_Is_triggerLeft);				// コントローラのトリガー操作
 		DLLXINPUT_API int GetPadThumbData(unsigned __int8 use_padnum, unsigned __int8 use_stick);			// コントローラのスティック操作
