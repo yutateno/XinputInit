@@ -120,7 +120,7 @@ namespace DLLXinput
 		, unsigned __int16 rightVib = XINPUT_PAD::VIB_MAX, unsigned __int16 leftVib = XINPUT_PAD::VIB_MAX);	
 
 	// バイブレーションをゆっくり止める
-	DLLXINPUT_API void VibrationSlowlyStop();
+	DLLXINPUT_API void VibrationSlowlyStop(unsigned __int8 use_padnum);
 
 	// バーブレーションを止める
 	DLLXINPUT_API void VibrationStop(unsigned __int8 use_padnum);
