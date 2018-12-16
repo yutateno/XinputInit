@@ -23,7 +23,7 @@
     <ProjectGuid>{CE719894-587F-423E-A2C0-B6D7DFC158DF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DLLXinput</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
