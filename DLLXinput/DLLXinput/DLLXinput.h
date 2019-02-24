@@ -109,11 +109,11 @@ namespace DLLXinput
 	// 解放
 	DLLXINPUT_API void Clean();
 
-	// ゲーム開始前操作更新
-	DLLXINPUT_API void FirstUpdate();
+	// 全てのコントローラの更新
+	DLLXINPUT_API void AllControllerUpdate();
 
-	// ゲーム開始後操作更新
-	DLLXINPUT_API void EverUpdate();
+	// 一つの特定したコントローラの更新
+	DLLXINPUT_API void OneControllerUpdate();
 
 	// バイブレーションを行う
 	DLLXINPUT_API void Vibration(unsigned __int8 use_padnum, int time = 0
